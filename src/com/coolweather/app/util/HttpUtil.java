@@ -6,12 +6,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import android.util.Log;
+
 public class HttpUtil {
 	public static void sendHttpRequest(final String address, final HttpCallbackListener listener) {
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
+				Log.d("test", "Http Send Request");
 				HttpURLConnection connection = null;
 				try {
 					URL url = new URL(address);
@@ -28,6 +31,7 @@ public class HttpUtil {
 						response.append(line);
 					}
 					if (listener != null) {
+						Log.d("test", "Http onfinish");
 						listener.onFinish(response.toString());
 					}
 				} catch (Exception e) {
