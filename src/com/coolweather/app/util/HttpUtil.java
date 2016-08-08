@@ -14,7 +14,6 @@ public class HttpUtil {
 
 			@Override
 			public void run() {
-				Log.d("test", "Http Send Request");
 				HttpURLConnection connection = null;
 				try {
 					URL url = new URL(address);
@@ -31,7 +30,6 @@ public class HttpUtil {
 						response.append(line);
 					}
 					if (listener != null) {
-						Log.d("test", "Http onfinish");
 						listener.onFinish(response.toString());
 					}
 				} catch (Exception e) {
@@ -43,9 +41,7 @@ public class HttpUtil {
 						connection.disconnect();
 					}
 				}
-
 			}
-
 		}).start();
 	}
 }
